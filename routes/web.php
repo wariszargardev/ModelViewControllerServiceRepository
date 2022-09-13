@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Translate\GoogleTranslateController;
 use App\Http\Controllers\WebNotificationController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/push-notificaiton', [WebNotificationController::class, 'index'])->name('push-notificaiton');
 Route::post('/store-token', [WebNotificationController::class, 'storeToken'])->name('store.token');
 Route::post('/send-web-notification', [WebNotificationController::class, 'sendWebNotification'])->name('send.web-notification');
+
+
+Route::get('google/translate',[GoogleTranslateController::class,'googleTranslate'])->name('google.translate');
+Route::get('google/translate/change',[GoogleTranslateController::class,'googleTranslateChange'])->name('google.translate.change');
