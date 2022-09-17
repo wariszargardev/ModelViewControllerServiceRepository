@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HttpRequestController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\WebNotificationController;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,8 @@ Route::post('/store-token', [WebNotificationController::class, 'storeToken'])->n
 Route::post('/send-web-notification', [WebNotificationController::class, 'sendWebNotification'])->name('send.web-notification');
 Route::get('base-64-image', [ImageUploadController::class, 'imageUpload']);
 Route::get('image-to-base64', [ImageUploadController::class, 'imageToBase64']);
+
+Route::get('simple-request', [HttpRequestController::class, 'simpleRequest']);
+Route::get('client-request', [HttpRequestController::class, 'getClientRequest']);
+
+
