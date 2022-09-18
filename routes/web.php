@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/fired', function () {
+    event(new \App\Events\ChatMessage());
+    dd('Event fired.');
+});
