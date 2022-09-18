@@ -40,6 +40,29 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        // FOR USER
+
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'user-api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+
+        //  FOR DOCTOR
+
+        'doctor' => [
+            'driver' => 'session',
+            'provider' => 'doctors',
+        ],
+
+        'doctor-api' => [
+            'driver' => 'passport',
+            'provider' => 'doctors',
+        ],
     ],
 
     /*
@@ -69,6 +92,12 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        // ADD DOCTOR PROVIDER
+        'doctors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Doctor::class,
+        ],
     ],
 
     /*
