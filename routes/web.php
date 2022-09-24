@@ -19,12 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::middleware(['ip.restrict'])->group(function (){
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Auth::routes();
 
-Route::get('/push-notificaiton', [WebNotificationController::class, 'index'])->name('push-notificaiton');
-Route::post('/store-token', [WebNotificationController::class, 'storeToken'])->name('store.token');
-Route::post('/send-web-notification', [WebNotificationController::class, 'sendWebNotification'])->name('send.web-notification');
-Route::get('base-64-image', [ImageUploadController::class, 'imageUpload']);
-Route::get('image-to-base64', [ImageUploadController::class, 'imageToBase64']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/push-notificaiton', [WebNotificationController::class, 'index'])->name('push-notificaiton');
+    Route::post('/store-token', [WebNotificationController::class, 'storeToken'])->name('store.token');
+    Route::post('/send-web-notification', [WebNotificationController::class, 'sendWebNotification'])->name('send.web-notification');
+    Route::get('base-64-image', [ImageUploadController::class, 'imageUpload']);
+    Route::get('image-to-base64', [ImageUploadController::class, 'imageToBase64']);
+
+});
