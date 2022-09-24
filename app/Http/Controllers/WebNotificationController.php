@@ -25,8 +25,7 @@ class WebNotificationController extends Controller
         $url = 'https://fcm.googleapis.com/fcm/send';
         $FcmToken = User::whereNotNull('device_key')->pluck('device_key')->all();
 
-        $serverKey = 'AAAAAHo4vio:APA91bE_CcNNOOcKax8WTuoFC0cYoj-jOcaS1xh53YJEg1hUV20cmGfzxm6TP9j0zfC3y-iP_ax5BVZe6bou7jZri4PWm4cmaKJDl5GDzEZXikqAnnY9zmnanXNOgIceHh1Ol9d6euza';
-
+        $serverKey = 'AAAAq6VEb5w:APA91bGB3MKtnVSWsM6vUDswFs4rWB7eDULhW6ZZ_rM50E3AJXn_rcG4zNw4I58Z6TRY7CDmjhNU3jDDSJdr_1UwnvHNjq53NGKRCgVFL5w82m70J6EAltnAqSDk_igO2EssLldjH9zO';
         $data = [
             'priority' =>  "high",
 
@@ -37,6 +36,9 @@ class WebNotificationController extends Controller
                 'image' => "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
             ]
         ];
+
+
+
         $encodedData = json_encode($data);
 
         $headers = [
@@ -63,7 +65,6 @@ class WebNotificationController extends Controller
         // Close connection
         curl_close($ch);
         // FCM response
-        return redirect()->back();
         dd($result);
     }
 }
