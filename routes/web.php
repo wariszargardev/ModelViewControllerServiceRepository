@@ -33,3 +33,9 @@ Route::get('image-to-base64', [ImageUploadController::class, 'imageToBase64']);
 
 Route::get('stripe',[StripePaymentController::class,'paymentStripe'])->name('addmoney.paymentstripe');
 Route::post('add-money-stripe',[StripePaymentController::class,'postPaymentStripe'])->name('addmoney.stripe');
+
+
+Route::get('/fired', function () {
+    event(new \App\Events\ChatMessage());
+    dd('Event fired.');
+});
